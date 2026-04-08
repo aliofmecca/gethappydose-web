@@ -15,8 +15,51 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(strings.brand.url),
   title: strings.meta.title,
   description: strings.meta.description,
+  keywords: [
+    "supplement tracker",
+    "supplement app",
+    "supplement protocol",
+    "absorption",
+    "supplement reminder",
+    "vitamin tracker",
+    "stack tracker",
+    "biohacking",
+    "health tracker",
+    "supplement compliance",
+  ],
+  authors: [{ name: strings.brand.name }],
+  creator: strings.brand.name,
+  publisher: strings.brand.name,
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/logo.png",
+  },
+  openGraph: {
+    title: strings.meta.title,
+    description: strings.meta.ogDescription,
+    url: strings.brand.url,
+    siteName: strings.brand.name,
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: strings.meta.title,
+    description: strings.meta.ogDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
