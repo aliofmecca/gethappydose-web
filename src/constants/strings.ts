@@ -22,37 +22,46 @@ export const strings = {
 
   // Hero
   hero: {
-    badge: "Coming soon — be the first inside",
+    badge: "BETA-AI inside — join the first wave",
     titleBefore: "Finally feel what your supplements",
     titleHighlight: "were supposed to do.",
     subtitle:
-      "Most people throw a handful of pills down their throat and hope for the best. HappyDose turns your daily ritual into an absorption-aware, results-aware routine — built around how your body actually works, what your supplements do to each other, and what your blood tests are trying to tell you.",
+      "Your \"wellness routine\" is a shelf full of half-empty bottles and the quiet, confused feeling of trying. HappyDose is the BETA-AI that finally turns the supplements you already paid for into results you can actually feel.",
     cta: "Get Early Access",
     emailPlaceholder: "Your email",
   },
 
   // Problem section
   problem: {
-    title: "You're not lazy. You were just never told the truth.",
+    title: "Let's be honest about what's actually in your cabinet.",
     subtitle:
-      "Nobody handed you a manual when you walked out of the supplement aisle. So you did what everyone does: bought five bottles, took them for two weeks, lost the rhythm, and quietly added \"figure it out later\" to a list that never gets shorter. Here's what's actually going wrong.",
+      "You're not new to this. You've been buying supplements for years — every one of them promised something. Some of them probably even worked, for a minute. But nobody ever sat you down and explained how this actually works. So you did what every smart person does when nobody is teaching them: you guessed. And you've been quietly paying for that guess ever since.",
     items: [
       {
-        pain: "You're shoving handfuls of pills down your throat and calling it \"taking supplements.\"",
+        pain: "Half the things in your stack are quietly fighting each other, and you're the one losing.",
         solution:
-          "Newsflash: half the things in your morning stack are at war with each other. Zinc and calcium cancel each other out at the gut wall. Iron and coffee? You just paid for an expensive placebo. Magnesium thrown in with the wrong crowd? Same deal. HappyDose catches the fight the moment you add a new supplement and tells you exactly when (and what) to take it with — so the money you spent actually shows up in your bloodstream, not your urine.",
+          "Zinc and calcium cancel each other out. Iron and coffee? Expensive placebo. HappyDose catches the fight the second you add a new bottle — and reshuffles your timings so your money actually reaches your bloodstream.",
       },
       {
-        pain: "You started vitamin D in November. It's now April. Are you better? You have no idea.",
+        pain: "You've been on it for months. Is it working? You honestly couldn't tell me.",
         solution:
-          "How long until it works? What does \"working\" even feel like? Should you take a break in summer? Should it show up on a blood test, or just in your mood at 4pm on a Tuesday? You can't answer any of this — because you've been guessing the whole time. HappyDose builds you a real timeline of every dose, every skip, every blood marker, and every week you felt off — until \"is it working?\" becomes a question with an actual answer.",
+          "How long until it kicks in? What should you feel? When do you cycle off? You can't answer any of it — because you've been flying blind. HappyDose builds you the timeline that finally turns \"is it working?\" into a fact.",
       },
       {
-        pain: "Those half-empty bottles in your cabinet are doing more damage than you think.",
+        pain: "You're quietly losing the one thing supplements are supposed to give you: momentum.",
         solution:
-          "It's not just wasted money and shelf space. Every abandoned bottle is a tiny, daily reminder that you started something and quit. Every cycle you stopped cold-turkey may have actually made things worse. Every time you walked past that drawer and looked away, the shadow got a little longer — and shadows in one part of your life have a way of crawling into the others. We're not here to add another guilt trip to your morning. We're here to make consistency the easiest thing you do all day, so the bottles run out the way they're supposed to: empty, on schedule, and replaced with another one.",
-      },
+          "It takes about four weeks to start absorbing properly. That's usually the week you give up. So no — you didn't just waste money. You paid full price to stop right before it was going to work, losing data, trust and more...With HappyDose - the story finally turns around.",
+      }
     ],
+  },
+
+  // Pharmacokinetics section — the "took it ≠ absorbed" wake-up call
+  absorption: {
+    eyebrow: "The one fact nobody selling supplements wants you to know",
+    title: "Yes, you took the supplement.",
+    titleHighlight: "But does that mean it got absorbed?",
+    body:
+      "Or did you just assume that because it's in your system, *it's in your system*? Those are not the same sentence. A pill can travel through you completely undigested — blocked by the wrong food, sabotaged by the wrong timing, or canceled out by the wrong neighbor in the same dose. This isn't opinion. It's basic _pharmacokinetics_. It's in every first-year nutrition textbook, every clinical absorption study, and every honest conversation between a pharmacist and a patient who finally asks the right question. The supplement industry has spent twenty years making sure you never ask it. HappyDose is built around it.",
   },
 
   // Mid-page reframe section (Option 3 — loss aversion / "you already paid")
@@ -66,27 +75,27 @@ export const strings = {
 
   // How it works
   howItWorks: {
-    title: "Three things we do that nobody else does properly.",
+    title: "Three things we do that nobody else is doing properly.",
     subtitle:
-      "We didn't build another reminder app. We built the thing your bottles wish came in the box — a real method, designed around your body, your blood tests, and your doctor. Not a replacement for any of them. The missing layer between all three.",
+      "We didn't build another reminder app. We built the thing that should have existed the whole time — a real method, designed around your body, your blood tests, and your doctor. Not a replacement for any of them. The missing layer between all three. Here's exactly what that looks like.",
     steps: [
       {
         number: "01",
-        title: "We turn your shelf into a stack that actually makes sense.",
+        title: "We turn your shelf into a protocol that actually holds up.",
         description:
-          "Scan each bottle once or add it by hand. We pull the manufacturer's dosage and timing instantly, then ask the things you'd never think to ask yourself: Did your doctor say something different? Should this be on an empty stomach? Away from your coffee? Away from the calcium in your yogurt? In thirty seconds it stops being a pile of bottles and starts being a protocol.",
+          "Scan a bottle — takes five seconds. Then you choose where the timing comes from: the manufacturer's label, your doctor's advice, your own research, or our BETA-AI. We handle the rest — empty stomach, away from your morning coffee, away from the calcium in your breakfast. In under a minute, your shelf stops being decoration and starts being the precise protocol a functional medicine doctor would charge you $400 to build.",
       },
       {
         number: "02",
         title: "Our BETA-AI watches every dose and tells you the truth.",
         description:
-          "This isn't a calendar app with a robot voice. Our in-app AI (in active beta with early users) flags interactions in real time, suggests better timings as your stack grows, and notices the patterns you'd miss — like \"you've felt foggy on every day you took X within two hours of bed.\" It learns from how you actually live, and it never lies to make you feel good. If something isn't working, it'll say so.",
+          "First-of-its-kind. Our in-app AI is live in beta today — it flags absorption conflicts the second you add a bottle, suggests better timings for you to accept or ignore, and spots the patterns you'd miss in your own data. This is the layer every other supplement app will try to add in two years — you get it on day one. It never lies to make you feel good. If something isn't working, it will say so out loud.",
       },
       {
         number: "03",
         title: "We complete your doctor's plan. We don't replace it.",
         description:
-          "Your physician has the final word, and your blood tests are the source of truth. Always. HappyDose logs your doctor's recommendations as a named profile, respects every override they give you, and turns your daily intake into a doctor-readable timeline you can hand them at your next appointment. We are the layer between the prescription pad and the kitchen counter — not a competitor to either.",
+          "Your physician has the final word. Your blood tests are the source of truth. HappyDose logs your doctor's recommendations, turns your daily intake into a clean timeline, and actively encourages real blood work before and after every cycle. The BETA-AI flags what changed and suggests what to ask next, but defers to your physician on whether to keep a supplement, cycle it off, or stop it for a season.",
       },
     ],
   },
@@ -111,9 +120,9 @@ export const strings = {
 
   // Waitlist
   waitlist: {
-    title: "Founding members get in first. And stay in cheaper. Forever.",
+    title: "Get inside the BETA-AI before anyone else does.",
     subtitle:
-      "We're letting in a small batch of early users before public launch. If you're on the list, you get: first access the moment we open the doors, a permanent founding-member discount that nobody after you will ever see again, direct line to us while we shape the BETA-AI around real users, and the chance to help build the supplement app that should have existed years ago. No spam. No fluff. Just the email that says \"you're in.\"",
+      "We're letting in a small batch of founding users before public launch. If you're on the list, you get: first access the moment we open the doors, a permanent founding-member price nobody after you will ever see again, a direct line to us while we shape the BETA-AI around real people like you, and the slightly unfair advantage of being on the inside of something that's going to become the standard in this space. No spam. No fluff. Just the email that says \"you're in.\"",
     namePlaceholder: "Your name (optional)",
     emailPlaceholder: "Your email",
     submitButton: "Claim My Spot",
@@ -125,7 +134,10 @@ export const strings = {
 
   // Footer
   footer: {
-    tagline: "For the ones who are done pretending the bottle on the shelf is doing the work.",
+    tagline: [
+      "Taking your supplements is the part you already paid for.",
+      "Getting results from them is the part everyone skips.",
+    ],
     copyright: (year: number) =>
       `\u00A9 ${year} HappyDose. All rights reserved.`,
     privacyPolicy: "Privacy Policy",

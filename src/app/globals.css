@@ -18,6 +18,9 @@
   --surface-tinted: #ffe9d6;
   --border: #f0e6dd;
   --border-strong: #e8d5c4;
+  --spotlight-bg: #1a0f08;
+  --spotlight-fg: #fff9f5;
+  --spotlight-glow: rgba(255, 105, 21, 0.18);
 }
 
 .dark {
@@ -30,6 +33,9 @@
   --surface-tinted: #3a1f10;
   --border: #3a2418;
   --border-strong: #4a2e1c;
+  --spotlight-bg: #0a0503;
+  --spotlight-fg: #fff9f5;
+  --spotlight-glow: rgba(255, 105, 21, 0.22);
 }
 
 @theme inline {
@@ -53,4 +59,83 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Spotlight section — signature treatment for the pharmacokinetics moment.
+   Two different treatments per theme so it never breaks the page:
+   - Dark mode: near-black with a warm orange glow (the "lights dimmed" moment)
+   - Light mode: cream/peach gradient with brighter orange glow (warm, sun-through-a-window)
+*/
+
+/* Dark mode (default for this section — used when .dark is on <html>) */
+.dark .spotlight-section {
+  color: #fff9f5;
+  background-color: #0a0503;
+  background-image:
+    radial-gradient(
+      ellipse 85% 65% at 50% 0%,
+      rgba(255, 105, 21, 0.45) 0%,
+      rgba(255, 105, 21, 0.15) 35%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 50% 100%,
+      rgba(255, 105, 21, 0.25) 0%,
+      transparent 70%
+    ),
+    linear-gradient(180deg, #0a0503 0%, #1a0a03 50%, #0a0503 100%);
+}
+
+/* Light mode — warm cream-to-peach gradient with bright orange glow */
+.spotlight-section {
+  position: relative;
+  isolation: isolate;
+  color: #1a0f08;
+  background-color: #ffe9d6;
+  background-image:
+    radial-gradient(
+      ellipse 85% 65% at 50% 0%,
+      rgba(255, 105, 21, 0.38) 0%,
+      rgba(255, 105, 21, 0.15) 40%,
+      transparent 75%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 50% 100%,
+      rgba(255, 228, 61, 0.35) 0%,
+      transparent 70%
+    ),
+    linear-gradient(180deg, #fff4e8 0%, #ffe0c2 50%, #ffd4a8 100%);
+}
+
+/* Dot grid — theme-aware */
+.spotlight-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle 1.2px at 1px 1px,
+    rgba(255, 105, 21, 0.18) 1.2px,
+    transparent 0
+  );
+  background-size: 26px 26px;
+  pointer-events: none;
+  z-index: -1;
+  mask-image: radial-gradient(
+    ellipse 100% 80% at 50% 50%,
+    black 40%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 100% 80% at 50% 50%,
+    black 40%,
+    transparent 100%
+  );
+}
+
+.dark .spotlight-section::before {
+  background-image: radial-gradient(
+    circle 1.2px at 1px 1px,
+    rgba(255, 249, 245, 0.13) 1.2px,
+    transparent 0
+  );
 }

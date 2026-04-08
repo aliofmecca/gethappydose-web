@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
 import { strings } from "@/constants/strings";
+import { renderEmphasis } from "@/lib/text";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -44,7 +45,7 @@ export default function Home() {
     <main className="flex flex-col min-h-screen bg-background">
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/70 backdrop-blur-lg supports-[backdrop-filter]:bg-background/50">
-        <nav className="flex items-center justify-between px-6 sm:px-8 py-4 max-w-6xl mx-auto w-full">
+        <nav className="flex items-center justify-between px-6 sm:px-8 py-4 max-w-7xl mx-auto w-full">
           <Link
             href="/"
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
@@ -74,7 +75,7 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative px-6 sm:px-8 pt-20 pb-24 bg-background">
-        <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
+        <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 bg-brand-yellow/30 border border-brand-yellow px-4 py-1.5 rounded-full mb-8">
             <span className="text-xs font-semibold text-foreground">
               ✨ {strings.hero.badge}
@@ -88,7 +89,7 @@ export default function Home() {
             </span>
           </h1>
 
-          <p className="mt-8 text-lg sm:text-xl text-muted max-w-2xl leading-relaxed">
+          <p className="mt-8 text-lg sm:text-xl text-muted max-w-3xl leading-relaxed">
             {strings.hero.subtitle}
           </p>
 
@@ -133,12 +134,12 @@ export default function Home() {
 
       {/* Problem → Solution */}
       <section className="py-24 px-6 sm:px-8 border-t border-border-strong bg-surface-elevated">
-        <div className="max-w-6xl mx-auto">
-          <div className="max-w-2xl mx-auto text-center mb-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
               {strings.problem.title}
             </h2>
-            <p className="text-muted leading-relaxed">
+            <p className="text-muted leading-relaxed text-lg">
               {strings.problem.subtitle}
             </p>
           </div>
@@ -146,19 +147,19 @@ export default function Home() {
             {strings.problem.items.map((item) => (
               <div
                 key={item.pain}
-                className="p-7 rounded-2xl border border-border bg-surface hover:border-brand-orange/40 transition-colors"
+                className="p-8 rounded-2xl border border-border bg-surface hover:border-brand-orange/40 transition-colors"
               >
                 <p className="text-brand-orange text-xs font-semibold uppercase tracking-wider mb-3">
                   The problem
                 </p>
-                <p className="text-lg font-semibold text-foreground mb-5 leading-snug">
+                <p className="text-xl font-semibold text-foreground mb-6 leading-snug">
                   {item.pain}
                 </p>
                 <p className="text-muted text-xs font-semibold uppercase tracking-wider mb-3">
                   How HappyDose fixes it
                 </p>
-                <p className="text-foreground/85 text-sm leading-relaxed">
-                  {item.solution}
+                <p className="text-foreground/85 text-base leading-relaxed">
+                  {renderEmphasis(item.solution)}
                 </p>
               </div>
             ))}
@@ -166,9 +167,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Absorption — "took it ≠ absorbed" pharmacokinetics spotlight.
+          Text uses text-inherit so it picks up spotlight-section's color token
+          (dark in light mode, cream in dark mode). */}
+      <section className="spotlight-section py-32 px-6 sm:px-8 border-y-2 border-brand-orange/30">
+        <div className="relative max-w-5xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 bg-brand-yellow/30 border border-brand-yellow px-4 py-1.5 rounded-full mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse" />
+            <span className="text-xs font-semibold text-inherit uppercase tracking-wider">
+              Pharmacokinetics 101
+            </span>
+          </div>
+          <p className="text-inherit opacity-60 text-xs font-semibold uppercase tracking-widest mb-6">
+            {strings.absorption.eyebrow}
+          </p>
+          <h2 className="text-4xl md:text-6xl font-bold text-inherit leading-[1.05] mb-8 tracking-tight">
+            {strings.absorption.title}
+            <br />
+            <span className="text-brand-orange italic">
+              {strings.absorption.titleHighlight}
+            </span>
+          </h2>
+          <p className="text-lg md:text-xl text-inherit opacity-85 leading-relaxed max-w-4xl mx-auto">
+            {renderEmphasis(strings.absorption.body)}
+          </p>
+        </div>
+      </section>
+
       {/* Reframe — "you're already paying" */}
       <section className="py-24 px-6 sm:px-8 border-t border-border-strong bg-background">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <p className="text-brand-orange text-xs font-semibold uppercase tracking-widest mb-5">
             {strings.reframe.eyebrow}
           </p>
@@ -179,7 +207,7 @@ export default function Home() {
               {strings.reframe.titleHighlight}
             </span>
           </h2>
-          <p className="text-lg text-foreground/85 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-lg text-foreground/85 leading-relaxed max-w-3xl mx-auto">
             {strings.reframe.body}
           </p>
         </div>
@@ -188,27 +216,27 @@ export default function Home() {
       {/* How it works */}
       <section
         id="how-it-works"
-        className="py-24 px-6 sm:px-8 border-t border-border-strong bg-surface-elevated"
+        className="py-24 px-6 sm:px-8 border-t border-border-strong bg-surface-elevated scroll-mt-[74px]"
       >
-        <div className="max-w-5xl mx-auto">
-          <div className="max-w-2xl mx-auto text-center mb-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
               {strings.howItWorks.title}
             </h2>
-            <p className="text-muted leading-relaxed">
+            <p className="text-muted leading-relaxed text-lg">
               {strings.howItWorks.subtitle}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {strings.howItWorks.steps.map((step) => (
               <div key={step.number}>
-                <span className="text-brand-orange text-5xl font-bold tracking-tight">
+                <span className="text-brand-orange text-6xl font-bold tracking-tight">
                   {step.number}
                 </span>
-                <h3 className="text-xl font-semibold text-foreground mt-4 mb-3 leading-snug">
+                <h3 className="text-2xl font-semibold text-foreground mt-5 mb-4 leading-snug">
                   {step.title}
                 </h3>
-                <p className="text-muted text-sm leading-relaxed">
+                <p className="text-muted text-base leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -224,35 +252,12 @@ export default function Home() {
         a feature grid here (icon, title, description per card).
       */}
 
-      {/* Manifesto */}
-      <section className="py-28 px-6 sm:px-8 border-t border-border-strong bg-background">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-brand-orange text-xs font-semibold uppercase tracking-widest mb-6">
-            {strings.manifesto.eyebrow}
-          </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-[1.15] mb-8">
-            {strings.manifesto.titleLines.map((line, i) => (
-              <span key={i} className="block">
-                {i === 1 || i === 3 ? (
-                  <span className="text-brand-orange">{line}</span>
-                ) : (
-                  line
-                )}
-              </span>
-            ))}
-          </h2>
-          <p className="text-lg text-muted leading-relaxed max-w-2xl mx-auto">
-            {strings.manifesto.body}
-          </p>
-        </div>
-      </section>
-
-      {/* Waitlist (final CTA) */}
+{/* Waitlist (final CTA) */}
       <section
         id="waitlist"
-        className="py-24 px-6 sm:px-8 border-t border-border-strong bg-surface-elevated"
+        className="py-24 px-6 sm:px-8 border-t border-border-strong bg-background"
       >
-        <div className="max-w-xl mx-auto text-center">
+        <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             {strings.waitlist.title}
           </h2>
@@ -301,8 +306,8 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border py-10 px-6 sm:px-8">
-        <div className="max-w-6xl mx-auto flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <footer className="border-t border-border py-10 px-6 sm:px-8 bg-surface-elevated">
+        <div className="max-w-7xl mx-auto flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
               <Image src="/logo.png" alt={strings.brand.name} width={24} height={24} />
@@ -310,8 +315,16 @@ export default function Home() {
                 {strings.brand.name}
               </span>
             </div>
-            <p className="text-xs text-muted max-w-sm">
-              {strings.footer.tagline}
+            <p className="text-xs text-muted max-w-sm leading-relaxed">
+              {strings.footer.tagline.map((line, i) => (
+                <span key={i} className="block">
+                  {i === 1 ? (
+                    <span className="text-brand-orange">{line}</span>
+                  ) : (
+                    line
+                  )}
+                </span>
+              ))}
             </p>
           </div>
           <div className="flex flex-col gap-3 text-sm text-muted md:items-end">
