@@ -1,26 +1,56 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand palette — Option A: Warm & energetic */
+  --color-brand-orange: #ff6915;
+  --color-brand-orange-hover: #e85a0a;
+  --color-brand-yellow: #ffe43d;
+  --color-cream: #fff9f5;
+
+  /* Light mode */
+  --background: #fff9f5;
+  --foreground: #1a1a1a;
+  --muted: #6b6b6b;
+  --surface: #ffffff;
+  --surface-elevated: #fff1e6;
+  --surface-tinted: #ffe9d6;
+  --border: #f0e6dd;
+  --border-strong: #e8d5c4;
+}
+
+.dark {
+  /* Dark mode */
+  --background: #160c06;
+  --foreground: #fff9f5;
+  --muted: #b09a8c;
+  --surface: #241510;
+  --surface-elevated: #0a0606;
+  --surface-tinted: #3a1f10;
+  --border: #3a2418;
+  --border-strong: #4a2e1c;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-tinted: var(--surface-tinted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-brand-orange: var(--color-brand-orange);
+  --color-brand-orange-hover: var(--color-brand-orange-hover);
+  --color-brand-yellow: var(--color-brand-yellow);
+  --color-cream: var(--color-cream);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
