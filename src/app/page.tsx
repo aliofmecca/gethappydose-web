@@ -93,6 +93,24 @@ export default function Home() {
             {strings.hero.subtitle}
           </p>
 
+          {/* Goal chips — built around what you're actually chasing */}
+          <div className="mt-10 flex flex-col items-center gap-4">
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted">
+              {strings.hero.goalsLabel}
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+              {strings.hero.goals.map((goal) => (
+                <span
+                  key={goal.label}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface border border-border text-foreground text-sm font-medium hover:border-brand-orange/50 transition-colors"
+                >
+                  <span className="text-base">{goal.emoji}</span>
+                  {goal.label}
+                </span>
+              ))}
+            </div>
+          </div>
+
           {/* Inline email capture */}
           <form
             onSubmit={handleSubmit}
@@ -220,6 +238,9 @@ export default function Home() {
       >
         <div className="max-w-6xl mx-auto">
           <div className="max-w-3xl mx-auto text-center mb-16">
+            <p className="text-brand-orange text-xs font-semibold uppercase tracking-widest mb-5">
+              {strings.howItWorks.eyebrow}
+            </p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
               {strings.howItWorks.title}
             </h2>

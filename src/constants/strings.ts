@@ -27,6 +27,13 @@ export const strings = {
     titleHighlight: "were supposed to do.",
     subtitle:
       "Your \"wellness routine\" is a shelf full of half-empty bottles and the quiet, confused feeling of trying. HappyDose is the BETA-AI that finally turns the supplements you already paid for into results you can actually feel.",
+    goalsLabel: "Built around what you're actually chasing",
+    goals: [
+      { emoji: "⚡", label: "Energy" },
+      { emoji: "🌙", label: "Sleep" },
+      { emoji: "💪", label: "Muscle Gain" },
+      { emoji: "🌿", label: "General Health" },
+    ],
     cta: "Get Early Access",
     emailPlaceholder: "Your email",
   },
@@ -75,6 +82,7 @@ export const strings = {
 
   // How it works
   howItWorks: {
+    eyebrow: "Bring us your bottles. We'll build you the protocol that turns them into results.",
     title: "Three things we do that nobody else is doing properly.",
     subtitle:
       "We didn't build another reminder app. We built the thing that should have existed the whole time — a real method, designed around your body, your blood tests, and your doctor. Not a replacement for any of them. The missing layer between all three. Here's exactly what that looks like.",
