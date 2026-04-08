@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
 import { strings } from "@/constants/strings";
 import { renderEmphasis } from "@/lib/text";
+import { supabase } from "@/lib/supabase";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -22,23 +23,26 @@ export default function Home() {
     setStatus("loading");
     setErrorMsg("");
 
-    // TODO: Connect to Supabase once the waitlist table is provisioned.
-    // Mirror the binate-web pattern:
-    //
-    //   const { error } = await supabase
-    //     .from("waitlist")
-    //     .insert({ email: email.toLowerCase().trim(), name: name.trim() || null });
-    //
-    //   if (error) {
-    //     if (error.code === "23505") { setStatus("success"); setErrorMsg(strings.waitlist.alreadyOnList); }
-    //     else { setStatus("error"); setErrorMsg(strings.waitlist.errorMessage); }
-    //   } else {
-    //     setStatus("success");
-    //   }
-    //
-    // For now we fake the success state so the form is fully usable in dev.
-    await new Promise((r) => setTimeout(r, 600));
-    setStatus("success");
+    const { error } = await supabase
+      .from("waitlist")
+      .insert({
+        email: email.toLowerCase().trim(),
+        name: name.trim() || null,
+      });
+
+    if (error) {
+      // 23505 = Postgres unique constraint violation. The user is already on
+      // the list — treat as success and tell them so.
+      if (error.code === "23505") {
+        setStatus("success");
+        setErrorMsg(strings.waitlist.alreadyOnList);
+      } else {
+        setStatus("error");
+        setErrorMsg(strings.waitlist.errorMessage);
+      }
+    } else {
+      setStatus("success");
+    }
   }
 
   return (
