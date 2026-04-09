@@ -52,14 +52,14 @@ export default function Home() {
         <nav className="flex items-center justify-between px-6 sm:px-8 py-4 max-w-7xl mx-auto w-full">
           <Link
             href="/"
-            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+            className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity"
           >
-            <Image src="/logo.png" alt={strings.brand.name} width={36} height={36} />
-            <span className="text-xl font-bold text-foreground">
+            <Image src="/logo.png" alt={strings.brand.name} width={32} height={32} className="sm:w-9 sm:h-9" />
+            <span className="text-lg sm:text-xl font-bold text-foreground">
               {strings.brand.name}
             </span>
           </Link>
-          <div className="flex items-center gap-3 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <a
               href="#how-it-works"
               className="hidden sm:block text-sm font-medium text-muted hover:text-foreground transition-colors"
@@ -69,7 +69,7 @@ export default function Home() {
             <ThemeToggle />
             <a
               href="#waitlist"
-              className="bg-brand-orange hover:bg-brand-orange-hover text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
+              className="bg-brand-orange hover:bg-brand-orange-hover text-white text-xs sm:text-sm font-semibold px-3 sm:px-5 py-2 sm:py-2.5 rounded-full transition-colors whitespace-nowrap"
             >
               {strings.nav.waitlist}
             </a>
