@@ -217,7 +217,7 @@ export default function Home() {
       </section>
 
       {/* Reframe — "you're already paying" */}
-      <section className="py-24 px-6 sm:px-8 border-t border-border-strong bg-background">
+      <section className="py-24 px-6 sm:px-8 bg-background">
         <div className="max-w-5xl mx-auto text-center">
           <p className="text-brand-orange text-xs font-semibold uppercase tracking-widest mb-5">
             {strings.reframe.eyebrow}
