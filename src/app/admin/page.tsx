@@ -89,7 +89,7 @@ export default function AdminPage() {
       <div className="max-w-5xl mx-auto">
         <div className="flex items-baseline justify-between mb-10">
           <h1 className="text-3xl font-bold text-foreground">Waitlist</h1>
-          <span className="text-sm text-muted">
+          <span className="text-sm text-foreground">
             {entries.length} {entries.length === 1 ? "signup" : "signups"}
           </span>
         </div>
@@ -101,8 +101,8 @@ export default function AdminPage() {
         ) : (
           <div className="rounded-2xl border border-border bg-surface overflow-hidden">
             <table className="w-full text-sm">
-              <thead className="bg-cream/40 border-b border-border">
-                <tr className="text-left text-xs uppercase tracking-wider text-muted">
+              <thead className="bg-brand-orange border-b border-brand-orange">
+                <tr className="text-left text-xs uppercase tracking-wider text-white">
                   <th className="px-5 py-3 font-semibold">Email</th>
                   <th className="px-5 py-3 font-semibold">Name</th>
                   <th className="px-5 py-3 font-semibold">Joined</th>
