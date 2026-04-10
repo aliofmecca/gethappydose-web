@@ -153,6 +153,26 @@ export const strings = {
     deleteAccount: "Delete Account",
   },
 
+  // Admin
+  admin: {
+    title: "Admin",
+    subtitle: "Enter the admin password to view the waitlist.",
+    passwordPlaceholder: "Password",
+    signIn: "Sign in",
+    checking: "Checking...",
+    wrongPassword: "Wrong password.",
+    genericError: "Something went wrong.",
+    networkError: "Network error. Try again.",
+    waitlistTitle: "Waitlist",
+    signup: "signup",
+    signups: "signups",
+    noSignups: "No signups yet.",
+    columnEmail: "Email",
+    columnName: "Name",
+    columnJoined: "Joined",
+    noName: "—",
+  },
+
   // Meta / SEO
   meta: {
     title: "HappyDose — Actually take your supplements correctly",

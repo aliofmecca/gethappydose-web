@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { strings } from "@/constants/strings";
 
 interface WaitlistEntry {
   id: string;
@@ -30,14 +31,14 @@ export default function AdminPage() {
       });
 
       if (res.status === 401) {
-        setError("Wrong password.");
+        setError(strings.admin.wrongPassword);
         setLoading(false);
         return;
       }
 
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
-        setError(body.error || "Something went wrong.");
+        setError(body.error || strings.admin.genericError);
         setLoading(false);
         return;
       }
@@ -46,7 +47,7 @@ export default function AdminPage() {
       setEntries(json.data || []);
       setAuthed(true);
     } catch {
-      setError("Network error. Try again.");
+      setError(strings.admin.networkError);
     } finally {
       setLoading(false);
     }
@@ -59,15 +60,17 @@ export default function AdminPage() {
           onSubmit={handleLogin}
           className="w-full max-w-sm p-8 rounded-2xl border border-border bg-surface"
         >
-          <h1 className="text-2xl font-bold text-foreground mb-2">Admin</h1>
+          <h1 className="text-2xl font-bold text-foreground mb-2">
+            {strings.admin.title}
+          </h1>
           <p className="text-sm text-muted mb-6">
-            Enter the admin password to view the waitlist.
+            {strings.admin.subtitle}
           </p>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
+            placeholder={strings.admin.passwordPlaceholder}
             required
             className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:outline-none focus:border-brand-orange transition-colors"
           />
@@ -77,7 +80,7 @@ export default function AdminPage() {
             disabled={loading}
             className="mt-4 w-full px-4 py-3 rounded-lg bg-brand-orange hover:bg-brand-orange-hover text-white font-semibold transition-colors disabled:opacity-50"
           >
-            {loading ? "Checking..." : "Sign in"}
+            {loading ? strings.admin.checking : strings.admin.signIn}
           </button>
         </form>
       </main>
@@ -88,24 +91,29 @@ export default function AdminPage() {
     <main className="min-h-screen py-16 px-6 bg-background">
       <div className="max-w-5xl mx-auto">
         <div className="flex items-baseline justify-between mb-10">
-          <h1 className="text-3xl font-bold text-foreground">Waitlist</h1>
+          <h1 className="text-3xl font-bold text-foreground">
+            {strings.admin.waitlistTitle}
+          </h1>
           <span className="text-sm text-foreground">
-            {entries.length} {entries.length === 1 ? "signup" : "signups"}
+            {entries.length}{" "}
+            {entries.length === 1
+              ? strings.admin.signup
+              : strings.admin.signups}
           </span>
         </div>
 
         {entries.length === 0 ? (
           <div className="p-10 rounded-2xl border border-border bg-surface text-center">
-            <p className="text-muted">No signups yet.</p>
+            <p className="text-muted">{strings.admin.noSignups}</p>
           </div>
         ) : (
           <div className="rounded-2xl border border-border bg-surface overflow-hidden">
             <table className="w-full text-sm">
               <thead className="bg-brand-orange border-b border-brand-orange">
                 <tr className="text-left text-xs uppercase tracking-wider text-white">
-                  <th className="px-5 py-3 font-semibold">Email</th>
-                  <th className="px-5 py-3 font-semibold">Name</th>
-                  <th className="px-5 py-3 font-semibold">Joined</th>
+                  <th className="px-5 py-3 font-semibold">{strings.admin.columnEmail}</th>
+                  <th className="px-5 py-3 font-semibold">{strings.admin.columnName}</th>
+                  <th className="px-5 py-3 font-semibold">{strings.admin.columnJoined}</th>
                 </tr>
               </thead>
               <tbody>
@@ -116,7 +124,7 @@ export default function AdminPage() {
                   >
                     <td className="px-5 py-3 text-foreground">{entry.email}</td>
                     <td className="px-5 py-3 text-muted">
-                      {entry.name || "—"}
+                      {entry.name || strings.admin.noName}
                     </td>
                     <td className="px-5 py-3 text-muted">
                       {new Date(entry.created_at).toLocaleString()}
