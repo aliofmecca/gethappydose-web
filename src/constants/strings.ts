@@ -230,7 +230,7 @@ export const strings = {
         list: [
           "Supabase: database, authentication, and file storage",
           "Apple & Google: optional one-tap sign-in providers",
-          "Stripe / RevenueCat: payment processing and subscription management (we never store your card details)",
+          "RevenueCat: payment processing and subscription management (we never store your card details)",
           "Sentry: error tracking and performance monitoring",
           "PostHog: product analytics (opt-out available; no personally identifying info is shared)",
           "Resend: transactional email delivery",
@@ -309,7 +309,7 @@ export const strings = {
       },
       {
         heading: "5. Subscription & Payments",
-        body: "HappyDose offers a free trial followed by paid subscription tiers. Subscriptions are processed through Apple App Store, Google Play, or Stripe and auto-renew unless cancelled. Refunds are handled in accordance with the applicable platform's policies. We reserve the right to change pricing with reasonable notice to existing subscribers.",
+        body: "HappyDose offers a free trial followed by paid subscription tiers. Subscriptions are processed through Apple App Store or Google Play and auto-renew unless cancelled. Refunds are handled in accordance with the applicable platform's policies. We reserve the right to change pricing with reasonable notice to existing subscribers.",
       },
       {
         heading: "6. User Content",
