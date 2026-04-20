@@ -140,6 +140,19 @@ export const strings = {
     errorMessage: "Something went wrong. Please try again.",
   },
 
+  // Auth confirmation intermediary page (/auth/confirm)
+  authConfirm: {
+    headingRecovery: "Reset your password",
+    headingVerified: "Email Verified!",
+    headingOpening: "Opening HappyDose...",
+    bodyTapToOpen:
+      "Tap the button below to open the HappyDose app and continue.",
+    bodyError:
+      "Something went wrong. Please open the HappyDose app manually and try again.",
+    bodyAutoRedirect: "You should be redirected to the app automatically.",
+    openButton: "Open HappyDose",
+  },
+
   // Footer
   footer: {
     tagline: [
