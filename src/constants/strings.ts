@@ -169,13 +169,19 @@ export const strings = {
   // Admin
   admin: {
     title: "Admin",
-    subtitle: "Enter the admin password to view the waitlist.",
+    subtitle: "Enter the admin password to continue.",
     passwordPlaceholder: "Password",
     signIn: "Sign in",
     checking: "Checking...",
     wrongPassword: "Wrong password.",
     genericError: "Something went wrong.",
     networkError: "Network error. Try again.",
+
+    // Tabs
+    tabWaitlist: "Waitlist",
+    tabFeedback: "Feedback",
+
+    // Waitlist
     waitlistTitle: "Waitlist",
     signup: "signup",
     signups: "signups",
@@ -184,6 +190,34 @@ export const strings = {
     columnName: "Name",
     columnJoined: "Joined",
     noName: "—",
+
+    // Feedback
+    feedbackTitle: "Feedback",
+    noFeedback: "No feedback from users yet.",
+    noFeedbackMatching: "No feedback matches the current filters.",
+    feedbackCount: (n: number) =>
+      `${n} ${n === 1 ? "feedback" : "feedbacks"}`,
+    filterAll: "All",
+    sortNewest: "Newest first",
+    sortMostHearts: "Most hearts",
+    sortMostComments: "Most comments",
+    sortLabel: "Sort",
+    categoryLabel: "Category",
+    statusLabel: "Status",
+    priorityLabel: "Priority",
+    commentsLabel: (n: number) => `${n} ${n === 1 ? "comment" : "comments"}`,
+    heartsLabel: (n: number) => `${n} ${n === 1 ? "heart" : "hearts"}`,
+    attachmentsLabel: (n: number) =>
+      `${n} ${n === 1 ? "attachment" : "attachments"}`,
+    replyPlaceholder: "Reply as HappyDose Team...",
+    sendReply: "Send reply",
+    sending: "Sending...",
+    deleteConfirm: "Delete this feedback? This cannot be undone.",
+    deleteCommentConfirm: "Delete this comment?",
+    deleteFeedback: "Delete feedback",
+    adminReplyLabel: "HappyDose Team",
+    openComments: "View comments",
+    closeComments: "Hide comments",
   },
 
   // Meta / SEO
