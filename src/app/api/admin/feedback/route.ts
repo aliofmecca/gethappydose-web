@@ -73,24 +73,17 @@ export async function POST(req: NextRequest) {
   }
 
   // ---------------------------------------------------------------
-  // add_comment: insert an admin-reply comment in the thread
-  // FK'd to the HappyDose admin auth user (ADMIN_USER_ID env var)
+  // add_comment: insert an admin-reply comment in the thread.
+  // user_id is left null — admin replies aren't tied to an auth user.
+  // The route is gated by ADMIN_PASSWORD and is_admin_reply flags the row.
   // ---------------------------------------------------------------
   if (action === "add_comment") {
-    const adminUserId = process.env.ADMIN_USER_ID;
-    if (!adminUserId) {
-      return fail(
-        "ADMIN_USER_ID env var is not set. Create an admin user in Supabase and set its uuid as ADMIN_USER_ID in your env.",
-        500
-      );
-    }
-
     const { feedbackId, comment } = body as { feedbackId?: string; comment?: string };
     if (!feedbackId || !comment?.trim()) return fail("feedbackId and comment are required", 400);
 
     const { error } = await supabase.from("feedback_comments").insert({
       feedback_id: feedbackId,
-      user_id: adminUserId,
+      user_id: null,
       body: comment.trim(),
       is_admin_reply: true,
     });
@@ -113,12 +106,42 @@ export async function POST(req: NextRequest) {
 
   // ---------------------------------------------------------------
   // delete_feedback: nuke a feedback row (cascades attachments,
-  // hearts, comments; storage cleanup trigger reaps storage objects)
+  // hearts, comments). Storage objects must be reaped here via the
+  // Storage API BEFORE the DB delete — new Supabase projects reject
+  // direct deletes on storage.objects, so we can't rely on a DB trigger
+  // (see migration 20260512_drop_feedback_storage_trigger.sql).
   // ---------------------------------------------------------------
   if (action === "delete_feedback") {
     const { feedbackId } = body as { feedbackId?: string };
     if (!feedbackId) return fail("feedbackId is required", 400);
 
+    // 1) Collect storage paths and delete the storage objects first.
+    const { data: attachments } = await supabase
+      .from("feedback_attachments")
+      .select("storage_path")
+      .eq("feedback_id", feedbackId);
+
+    const paths = (attachments ?? [])
+      .map((a) => a.storage_path)
+      .filter((p): p is string => !!p);
+
+    if (paths.length > 0) {
+      // Best-effort: a failure here doesn't block DB deletion (the trigger
+      // will catch it on the cascade). Log it for the admin to investigate.
+      const { error: storageError } = await supabase.storage
+        .from("feedback-attachments")
+        .remove(paths);
+      if (storageError) {
+        console.warn(
+          `[admin/feedback] storage.remove failed for ${feedbackId}:`,
+          storageError.message
+        );
+      }
+    }
+
+    // 2) Delete the feedback row — DB cascade wipes attachments / hearts /
+    //    comments, and the trigger fires on each attachment row death as a
+    //    safety net for any storage objects we missed in step 1.
     const { error } = await supabase.from("feedback").delete().eq("id", feedbackId);
     if (error) return fail(error.message);
     return NextResponse.json({ success: true });
@@ -161,10 +184,11 @@ export async function POST(req: NextRequest) {
   if (commentsError) return fail(commentsError.message);
 
   // Collect every author id that appears in feedback OR comments and
-  // pull their profile rows in one query.
+  // pull their profile rows in one query. Admin-reply comments have
+  // user_id = null — skip them so we don't poison the uuid .in() filter.
   const authorIds = new Set<string>();
-  (feedback ?? []).forEach((f) => authorIds.add(f.user_id));
-  (comments ?? []).forEach((c) => authorIds.add(c.user_id));
+  (feedback ?? []).forEach((f) => { if (f.user_id) authorIds.add(f.user_id); });
+  (comments ?? []).forEach((c) => { if (c.user_id) authorIds.add(c.user_id); });
 
   let profilesById = new Map<string, { id: string; full_name: string | null; profile_picture_url: string | null; email: string | null }>();
   if (authorIds.size > 0) {
