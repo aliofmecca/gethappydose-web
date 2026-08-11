@@ -97,7 +97,7 @@ export const strings = {
         number: "02",
         title: "Our AI watches every dose and tells you the truth.",
         description:
-          "First-of-its-kind. Our in-app AI is live in beta today — it flags absorption conflicts the second you add a bottle, suggests better timings for you to accept or ignore, and spots the patterns you'd miss in your own data. This is the layer every other supplement app will try to add in two years — you get it on day one. It never lies to make you feel good. If something isn't working, it will say so out loud.",
+          "First-of-its-kind. Our in-app AI is live today — it flags absorption conflicts the second you add a bottle, suggests better timings for you to accept or ignore, and spots the patterns you'd miss in your own data. This is the layer every other supplement app will try to add in two years — you get it on day one. It never lies to make you feel good. If something isn't working, it will say so out loud.",
       },
       {
         number: "03",
