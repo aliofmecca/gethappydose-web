@@ -22,11 +22,11 @@ export const strings = {
 
   // Hero
   hero: {
-    badge: "BETA-AI inside — join the first wave",
+    badge: "AI Insights inside — join the first wave",
     titleBefore: "Finally feel what your supplements",
     titleHighlight: "were supposed to do.",
     subtitle:
-      "Your \"wellness routine\" is a shelf full of half-empty bottles and the quiet, confused feeling of trying. HappyDose is the BETA-AI that finally turns the supplements you already paid for into results you can actually feel.",
+      "Your \"wellness routine\" is a shelf full of half-empty bottles and the quiet, confused feeling of trying. HappyDose is the AI that finally turns the supplements you already paid for into results you can actually feel.",
     goalsLabel: "Built around what you're actually chasing",
     goals: [
       { emoji: "⚡", label: "Energy" },
@@ -91,11 +91,11 @@ export const strings = {
         number: "01",
         title: "We turn your shelf into a protocol that actually holds up.",
         description:
-          "Scan a bottle — takes five seconds. Then you choose where the timing comes from: the manufacturer's label, your doctor's advice, your own research, or our BETA-AI. We handle the rest — empty stomach, away from your morning coffee, away from the calcium in your breakfast. In under a minute, your shelf stops being decoration and starts being the precise protocol a functional medicine doctor would charge you $400 to build.",
+          "Scan a bottle — takes five seconds. Then you choose where the timing comes from: the manufacturer's label, your doctor's advice, your own research, or our AI. We handle the rest — empty stomach, away from your morning coffee, away from the calcium in your breakfast. In under a minute, your shelf stops being decoration and starts being the precise protocol a functional medicine doctor would charge you $400 to build.",
       },
       {
         number: "02",
-        title: "Our BETA-AI watches every dose and tells you the truth.",
+        title: "Our AI watches every dose and tells you the truth.",
         description:
           "First-of-its-kind. Our in-app AI is live in beta today — it flags absorption conflicts the second you add a bottle, suggests better timings for you to accept or ignore, and spots the patterns you'd miss in your own data. This is the layer every other supplement app will try to add in two years — you get it on day one. It never lies to make you feel good. If something isn't working, it will say so out loud.",
       },
@@ -103,7 +103,7 @@ export const strings = {
         number: "03",
         title: "We complete your doctor's plan. We don't replace it.",
         description:
-          "Your physician has the final word. Your blood tests are the source of truth. HappyDose logs your doctor's recommendations, turns your daily intake into a clean timeline, and actively encourages real blood work before and after every cycle. The BETA-AI flags what changed and suggests what to ask next, but defers to your physician on whether to keep a supplement, cycle it off, or stop it for a season.",
+          "Your physician has the final word. Your blood tests are the source of truth. HappyDose logs your doctor's recommendations, turns your daily intake into a clean timeline, and actively encourages real blood work before and after every cycle. The AI flags what changed and suggests what to ask next, but defers to your physician on whether to keep a supplement, cycle it off, or stop it for a season.",
       },
     ],
   },
@@ -128,9 +128,9 @@ export const strings = {
 
   // Waitlist
   waitlist: {
-    title: "Get inside the BETA-AI before anyone else does.",
+    title: "Get inside AI Insights before anyone else does.",
     subtitle:
-      "We're letting in a small batch of founding users before public launch. If you're on the list, you get: first access the moment we open the doors, a permanent founding-member price nobody after you will ever see again, a direct line to us while we shape the BETA-AI around real people like you, and the slightly unfair advantage of being on the inside of something that's going to become the standard in this space. No spam. No fluff. Just the email that says \"you're in.\"",
+      "We're letting in a small batch of founding users before public launch. If you're on the list, you get: first access the moment we open the doors, a permanent founding-member price nobody after you will ever see again, a direct line to us while we shape AI Insights around real people like you, and the slightly unfair advantage of being on the inside of something that's going to become the standard in this space. No spam. No fluff. Just the email that says \"you're in.\"",
     namePlaceholder: "Your name (optional)",
     emailPlaceholder: "Your email",
     submitButton: "Claim My Spot",
